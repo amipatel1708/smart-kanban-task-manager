@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Kanban Task Manager</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="main-container">
+    <h1>Smart Kanban Task Manager (Offline-First)</h1>
+
+    <!-- Top Controls -->
+    <div class="card top-row">
+        <div class="filters">
+            <div class="filter-group">
+                <label>Filter by Priority:</label>
+                <select id="priorityFilter">
+                    <option value="all">All</option>
+                    <option value="high">High</option>
+                    <option value="medium">Medium</option>
+                    <option value="low">Low</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Filter by Due Date:</label>
+                <select id="dateFilter">
+                    <option value="all">All</option>
+                    <option value="today">Today</option>
+                    <option value="overdue">Overdue</option>
+                </select>
+            </div>
+        </div>
+        <button id="addTaskBtn">+ Add Task</button>
+    </div>
+
+    <!-- Board -->
+    <div class="board">
+        <div class="column todo">
+            <h2>To Do<span>✔</span></h2>
+            <div class="task-list" id="todo"></div>
+        </div>
+
+        <div class="column progress">
+            <h2>In Progress<span>⟳</span></h2>
+            <div class="task-list" id="in-progress"></div>
+        </div>
+
+        <div class="column done">
+            <h2>Done <span>✓</span></h2>
+            <div class="task-list" id="done"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal hidden" id="taskModal">
+    <div class="modal-content">
+        <h3 id="modalTitle">Add Task</h3>
+
+        <div class="form-row">
+            <label>Title</label>
+            <input type="text" id="taskTitle">
+        </div>
+
+        <div class="form-row">
+            <label>Description</label>
+            <textarea id="taskDesc"></textarea>
+        </div>
+
+        <div class="form-row">
+            <label>Priority</label>
+            <select id="taskPriority">
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+            </select>
+        </div>
+
+        <div class="form-row">
+            <label>Due Date</label>
+            <input type="date" id="taskDate">
+        </div>
+
+        <div class="modal-actions">
+            <button id="saveTaskBtn">Save</button>
+            <button id="cancelBtn">Cancel</button>
+        </div>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
