@@ -50,12 +50,41 @@ function closeModal() {
 }
 
 function saveTask() {
+    const title = taskTitle.value.trim();
+    const desc = taskDesc.value.trim();
+    const priority = taskPriority.value;
+    const date = taskDate.value;
+
+    if (!title) {
+        alert("Task title is required.");
+        taskTitle.focus();
+        return;
+    }
+
+    if (!desc) {
+        alert("Task description is required.");
+        taskDesc.focus();
+        return;
+    }
+
+    if (!priority) {
+        alert("Please select task priority.");
+        taskPriority.focus();
+        return;
+    }
+
+    if (!date) {
+        alert("Please select due date.");
+        taskDate.focus();
+        return;
+    }
+
     const task = {
         id: editingTaskId || Date.now(),
-        title: taskTitle.value,
-        desc: taskDesc.value,
-        priority: taskPriority.value,
-        date: taskDate.value,
+        title,
+        desc,
+        priority,
+        date,
         status: editingTaskId
             ? tasks.find(t => t.id === editingTaskId).status
             : "todo"
